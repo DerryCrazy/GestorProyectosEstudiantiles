@@ -44,25 +44,4 @@ def buscar_estudiante():
             print("  - No está asignado a ningún proyecto.")
     else:
         print("Estudiante no encontrado.")
-
-def mostrar_menu_estudiantes():
-    """Muestra un submenú para gestionar estudiantes."""
-    while True:
-        print("\n--- Gestión de Estudiantes ---")
-        print("1. Registrar Estudiante")
-        print("2. Listar Estudiantes")
-        print("3. Buscar Estudiante")
-        print("4. Volver al Menú Principal")
-        opcion = input("Selecciona una opción (1-4): ")
-
-        if opcion == '1':
-            registrar_estudiante()
-        elif opcion == '2':
-            listar_estudiantes()
-        elif opcion == '3':
-            buscar_estudiante()
-        elif opcion == '4':
-            print("Volviendo al menú principal...")
-            break
-        else:
-            print("Opción inválida.")
+        
