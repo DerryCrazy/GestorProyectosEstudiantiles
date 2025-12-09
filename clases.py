@@ -1,7 +1,10 @@
 class Estudiante:
-    def _init_(self, nombre, matricula):
+    def __init__(self, nombre, matricula):
         self.nombre = nombre
         self.matricula = matricula
+
+    def __str__(self):
+        return f"{self.nombre} ({self.matricula})"
 
 
 class Tarea:
