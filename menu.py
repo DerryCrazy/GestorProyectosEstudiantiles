@@ -53,7 +53,7 @@ def menu_principal():
 
         if opcion == '1':
             print("Navegando a Gestión de Proyectos...")
-            # Llamar a funciones de gestion_proyectos.py
+            mostrar_menu_proyectos()
             pass
         elif opcion == '2':
             print("Navegando a Gestión de Estudiantes...")
