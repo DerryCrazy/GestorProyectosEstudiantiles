@@ -1,8 +1,7 @@
 import datos
+from proy import crear_proyecto, listar_proyectos, buscar_proyecto, asignar_estudiante_a_proyecto
+from est import registrar_estudiante
 from homework import crear_tarea, listar_tareas_ordenadas, buscar_tareas, marcar_tarea_como_finalizada
-# Importar funciones de gestión de proyectos y estudiantes aquí también
-# from gestion_proyectos import crear_proyecto, ...
-# from gestion_estudiantes import crear_estudiante, ...
 
 def mostrar_menu():
     print("\n--- Gestor de Proyectos Estudiantiles ---")
@@ -20,6 +19,31 @@ def submenu_tareas():
     print("5. Volver al Menú Principal")
     opcion = input("Selecciona una opción (1-5): ")
     return opcion
+
+def mostrar_menu_proyectos():
+    """Muestra un submenú para gestionar proyectos."""
+    while True:
+        print("\n--- Gestión de Proyectos ---")
+        print("1. Crear Proyecto")
+        print("2. Listar Proyectos")
+        print("3. Buscar Proyecto")
+        print("4. Asignar Estudiante a Proyecto")
+        print("5. Volver al Menú Principal")
+        opcion = input("Selecciona una opción (1-5): ")
+
+        if opcion == '1':
+            crear_proyecto()
+        elif opcion == '2':
+            listar_proyectos()
+        elif opcion == '3':
+            buscar_proyecto()
+        elif opcion == '4':
+            asignar_estudiante_a_proyecto()
+        elif opcion == '5':
+            print("Volviendo al menú principal...")
+            break
+        else:
+            print("Opción inválida.")
 
 def menu_principal():
     # datos.cargar_datos() # Llamar a la función de cargar si existe
@@ -56,3 +80,5 @@ def menu_principal():
             break
         else:
             print("Opción inválida.")
+
+
