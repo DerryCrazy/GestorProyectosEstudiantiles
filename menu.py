@@ -1,7 +1,7 @@
 import datos
 from est import mostrar_menu_estudiantes
 from proy import mostrar_menu_proyectos
-from homework import mostrar_menu_tareas, crear_tarea, listar_tareas_ordenadas, buscar_tareas, marcar_tarea_como_finalizada
+from homework import mostrar_menu_tareas
 def menu_principal():
     datos.cargar_datos()
     print("GESTOR DE PROYECTOS ESTUDIANTILES - TEC VALLES")
