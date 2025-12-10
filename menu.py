@@ -84,7 +84,7 @@ def menu_principal():
             pass
         elif opcion == '2':
             print("Navegando a Gestión de Estudiantes...")
-            # Llamar a funciones de gestion_estudiantes.py
+            mostrar_menu_estudiantes()
             pass
         elif opcion == '3':
             while True:
