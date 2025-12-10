@@ -21,6 +21,16 @@ class Tarea:  # Básica por ahora, para proyectos de ejemplo
 
     def __str__(self):
         return f"[{self.estado}] {self.descripcion} (Fecha: {self.fecha_limite})"
+    
+    def marcar_finalizada(self):
+        # Validar dependencias antes de marcar
+        for dep in self.dependencias:
+            if dep.estado != "finalizada":
+                print(f"❌ No se puede finalizar '{self.descripcion}' porque '{dep.descripcion}' no está finalizada.")
+                return False
+        self.estado = "finalizada"
+        print(f"✅ '{self.descripcion}' finalizada correctamente.")
+        return True
 
 class Proyecto:
     def __init__(self, nombre, estado="activo"):

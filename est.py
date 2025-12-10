@@ -70,3 +70,9 @@ def mostrar_menu_estudiantes():
             break
         else:
             print("Opción no válida.")
+
+def buscar_estudiante_por_matricula(matricula):
+    for e in datos.estudiantes:
+        if e.matricula == matricula:
+            return e
+    return None

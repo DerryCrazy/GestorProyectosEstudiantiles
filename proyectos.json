@@ -77,8 +77,26 @@
     {
         "nombre": "Puerta Automatica",
         "estado": "activo",
-        "equipo": [],
-        "lista_tareas": [],
-        "dependencias": []
+        "equipo": [
+            "A001"
+        ],
+        "lista_tareas": [
+            {
+                "descripcion": "Medir metricas y tama\u00f1os",
+                "fecha_limite": "2025-12-25",
+                "estado": "pendiente",
+                "matricula_asignada": "A001"
+            },
+            {
+                "descripcion": "Comprar vidrio",
+                "fecha_limite": "2025-12-23",
+                "estado": "pendiente",
+                "matricula_asignada": null
+            }
+        ],
+        "dependencias": [
+            [],
+            []
+        ]
     }
 ]
