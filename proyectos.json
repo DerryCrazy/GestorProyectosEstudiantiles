@@ -1,0 +1,84 @@
+[
+    {
+        "nombre": "Proyecto Investigaci\u00f3n IA",
+        "estado": "activo",
+        "equipo": [],
+        "lista_tareas": [
+            {
+                "descripcion": "Recopilar datos",
+                "fecha_limite": "2025-12-15",
+                "estado": "pendiente",
+                "matricula_asignada": null
+            },
+            {
+                "descripcion": "Analizar resultados",
+                "fecha_limite": "2025-12-20",
+                "estado": "pendiente",
+                "matricula_asignada": null
+            }
+        ],
+        "dependencias": [
+            [],
+            [
+                0
+            ]
+        ]
+    },
+    {
+        "nombre": "Desarrollo App M\u00f3vil",
+        "estado": "activo",
+        "equipo": [],
+        "lista_tareas": [
+            {
+                "descripcion": "Dise\u00f1o UI",
+                "fecha_limite": "2025-12-18",
+                "estado": "pendiente",
+                "matricula_asignada": null
+            },
+            {
+                "descripcion": "Implementar backend",
+                "fecha_limite": "2025-12-25",
+                "estado": "pendiente",
+                "matricula_asignada": null
+            }
+        ],
+        "dependencias": [
+            [],
+            [
+                0
+            ]
+        ]
+    },
+    {
+        "nombre": "Competencia Rob\u00f3tica",
+        "estado": "finalizado",
+        "equipo": [],
+        "lista_tareas": [
+            {
+                "descripcion": "Construir prototipo",
+                "fecha_limite": "2025-12-22",
+                "estado": "pendiente",
+                "matricula_asignada": null
+            },
+            {
+                "descripcion": "Probar sensores",
+                "fecha_limite": "2025-12-28",
+                "estado": "pendiente",
+                "matricula_asignada": null
+            }
+        ],
+        "dependencias": [
+            [],
+            [
+                0
+            ]
+        ]
+    },
+    {
+        "nombre": "Puerta Automatica",
+        "estado": "activo",
+        "equipo": [],
+        "lista_tareas": [],
+        "dependencias": []
+    }
+]

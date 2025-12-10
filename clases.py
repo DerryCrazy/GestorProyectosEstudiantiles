@@ -7,37 +7,41 @@ class Estudiante:
         return f"{self.nombre} ({self.matricula})"
 
 
-class Tarea:
+class Tarea:  # Básica por ahora, para proyectos de ejemplo
     def __init__(self, descripcion, fecha_limite, estado="pendiente", matricula_asignada=None):
         self.descripcion = descripcion
-        self.fecha_limite = fecha_limite # Se asume formato comparable (e.g., "YYYY-MM-DD")
+        self.fecha_limite = fecha_limite
         self.estado = estado
         self.matricula_asignada = matricula_asignada
-        # Atributo para dependencias (lista de objetos Tarea)
-        self.dependencias = []
-        # Atributo para tareas que dependen de esta (para construir el árbol)
-        self.tareas_dependientes = []
+        self.dependencias = []  # Para árbol futuro
 
-    def agregar_dependencia(self, tarea_dependiente):
-        """Agrega una tarea que DEBE completarse ANTES de esta."""
-        if tarea_dependiente not in self.dependencias:
-            self.dependencias.append(tarea_dependiente)
-            tarea_dependiente.tareas_dependientes.append(self)
+    def agregar_dependencia(self, tarea_previa):
+        if tarea_previa not in self.dependencias:
+            self.dependencias.append(tarea_previa)
 
-    def __repr__(self):
-        return f"Tarea(desc='{self.descripcion}', fecha='{self.fecha_limite}', estado='{self.estado}', mat_asig='{self.matricula_asignada}')"
-
+    def __str__(self):
+        return f"[{self.estado}] {self.descripcion} (Fecha: {self.fecha_limite})"
 
 class Proyecto:
-    def __init__(self, nombre, equipo=None):
-        if equipo is None:
-            equipo = []
+    def __init__(self, nombre, estado="activo"):
         self.nombre = nombre
-        self.equipo = equipo # Lista de objetos Estudiante
-        self.lista_tareas = [] # Lista de objetos Tarea
+        self.estado = estado  # "activo" o "finalizado"
+        self.equipo = []  # Lista de Estudiantes
+        self.lista_tareas = []  # Lista de Tareas
+
+    def agregar_estudiante(self, estudiante):
+        if estudiante not in self.equipo:
+            self.equipo.append(estudiante)
 
     def agregar_tarea(self, tarea):
         self.lista_tareas.append(tarea)
 
-    def __repr__(self):
-         return f"Proyecto(nombre='{self.nombre}', equipo={len(self.equipo)} miembros, tareas={len(self.lista_tareas)})"
+    def cambiar_estado(self, nuevo_estado):
+        if nuevo_estado in ["activo", "finalizado"]:
+            self.estado = nuevo_estado
+            print(f"Proyecto '{self.nombre}' ahora está {nuevo_estado}.")
+        else:
+            print("Estado inválido.")
+
+    def __str__(self):
+        return f"{self.nombre} [{self.estado}] - Equipo: {len(self.equipo)} miembros, Tareas: {len(self.lista_tareas)}"
