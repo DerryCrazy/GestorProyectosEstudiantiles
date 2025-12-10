@@ -1,85 +1,20 @@
 import datos
-from proy import crear_proyecto, listar_proyectos, buscar_proyecto, asignar_estudiante_a_proyecto
-from est import registrar_estudiante, listar_estudiantes, buscar_estudiante
-from homework import crear_tarea, listar_tareas_ordenadas, buscar_tareas, marcar_tarea_como_finalizada
-
-def mostrar_menu():
-    print("\n--- Gestor de Proyectos Estudiantiles ---")
-    print("1. Gestionar Proyectos")
-    print("2. Gestionar Estudiantes")
-    print("3. Gestionar Tareas")
-    print("4. Salir")
-
-def submenu_tareas():
-    print("\n--- Gestión de Tareas ---")
-    print("1. Crear Tarea")
-    print("2. Listar Tareas (ordenadas por fecha)")
-    print("3. Buscar Tareas")
-    print("4. Marcar Tarea como Finalizada")
-    print("5. Volver al Menú Principal")
-    opcion = input("Selecciona una opción (1-5): ")
-    return opcion
-
-def mostrar_menu_proyectos():
-    """Muestra un submenú para gestionar proyectos."""
-    while True:
-        print("\n--- Gestión de Proyectos ---")
-        print("1. Crear Proyecto")
-        print("2. Listar Proyectos")
-        print("3. Buscar Proyecto")
-        print("4. Asignar Estudiante a Proyecto")
-        print("5. Volver al Menú Principal")
-        opcion = input("Selecciona una opción (1-5): ")
-
-        if opcion == '1':
-            crear_proyecto()
-        elif opcion == '2':
-            listar_proyectos()
-        elif opcion == '3':
-            buscar_proyecto()
-        elif opcion == '4':
-            asignar_estudiante_a_proyecto()
-        elif opcion == '5':
-            print("Volviendo al menú principal...")
-            break
-        else:
-            print("Opción inválida.")
-
-
-
-def mostrar_menu_estudiantes():
-    """Muestra un submenú para gestionar estudiantes."""
-    while True:
-        print("\n--- Gestión de Estudiantes ---")
-        print("1. Registrar Estudiante")
-        print("2. Listar Estudiantes")
-        print("3. Buscar Estudiante")
-        print("4. Volver al Menú Principal")
-        opcion = input("Selecciona una opción (1-4): ")
-
-        if opcion == '1':
-            registrar_estudiante()
-        elif opcion == '2':
-            listar_estudiantes()
-        elif opcion == '3':
-            buscar_estudiante()
-        elif opcion == '4':
-            print("Volviendo al menú principal...")
-            break
-        else:
-            print("Opción inválida.")
-
-
-
+from est import mostrar_menu_estudiantes
+from proy import mostrar_menu_proyectos
+from homework import mostrar_menu_tareas, submenu_tareas, crear_tarea, listar_tareas_ordenadas, buscar_tareas, marcar_tarea_como_finalizada
 
 def menu_principal():
-    # datos.cargar_datos() # Llamar a la función de cargar si existe
+    datos.cargar_datos()
+    print("GESTOR DE PROYECTOS ESTUDIANTILES - TEC VALLES")
     while True:
-        mostrar_menu()
-        opcion = input("Selecciona una opción (1-4): ")
-
-        if opcion == '1':
-            print("Navegando a Gestión de Proyectos...")
+        print("\n" + "="*40)
+        print("1. Gestión de Proyectos")
+        print("2. Gestión de Estudiantes")
+        print("3. Gestión de Tareas")
+        print("4. Salir")
+        print("="*40)
+        opcion = input("→ ")
+        if opcion == "1":
             mostrar_menu_proyectos()
             pass
         elif opcion == '2':

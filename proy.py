@@ -1,63 +1,74 @@
-from clases import Proyecto, Estudiante
 import datos
-#este archivo se va a usar para poner funciones relacionadas con los proyectos
 
 def crear_proyecto():
-    print("--- Crear proyecto ---")
     nombre = input("Nombre del proyecto: ")
-
-    if datos.buscar_proyecto_por_nombre(nombre) is not None:
-        print("Ya existe un proyecto con ese nombre.")
+    if any(p.nombre.lower() == nombre.lower() for p in datos.proyectos):
+        print("Ya existe")
         return
+    p = datos.Proyecto(nombre)
+    datos.proyectos.append(p)
+    datos.guardar_datos()
+    print("Proyecto creado")
+    if input("¿Agregar tareas/estudiantes ahora? (s/n): ").lower() == "s":
+        editar_proyecto(p)
 
-    proyecto = Proyecto(nombre)
-    datos.proyectos.append(proyecto) # Agrega a la lista de proyectos
-    print("Proyecto '{nombre}' creado exitosamente.")
-    
 def listar_proyectos():
-        print("\n--- Listar Proyectos ---")
-        if not datos.proyectos:
-             print("No hay proyectos registrados.")
-             return
-        
-        for i, proyecto in enumerate(datos.proyectos, start=1):
-            print(f"{i}. {proyecto.nombre} - Miembros: {len(proyecto.equipo)} - Tareas: {len(proyecto.lista_tareas)}")
+    print("\n=== PROYECTOS ===")
+    for i, p in enumerate(datos.proyectos, 1):
+        print(f"{i}. {p}")
+        for t in p.lista_tareas:
+            print(f"   • {t}")
+        print("-" * 40)
 
-def buscar_proyecto():
-    print("\n--- Buscar Proyecto ---")
-    nombre_busqueda = input("Ingresa el nombre del proyecto a buscar: ")
-    proyecto = datos.buscar_proyecto_por_nombre(nombre_busqueda)
+def editar_proyecto(p=None):
+    if p is None:
+        listar_proyectos()
+        try:
+            n = int(input("Número de proyecto: ")) - 1
+            p = datos.proyectos[n]
+        except:
+            return
 
-    if proyecto:
-        print(f"Proyecto encontrado: {proyecto.nombre}")
-        print(f"  - Miembros: {len(proyecto.equipo)}")
-        for est in proyecto.equipo:
-            print(f"    * {est.nombre} (Matrícula: {est.matricula})")
-        print(f"  - Tareas ({len(proyecto.lista_tareas)}):")
-        for tarea in proyecto.lista_tareas:
-            print(f"    * {tarea.descripcion} [{tarea.estado}] (Fecha: {tarea.fecha_limite})")
-    else:
-        print("Proyecto no encontrado.")
+    while True:
+        print(f"\nEditando: {p.nombre}")
+        print("1. Agregar estudiante")
+        print("2. Agregar tarea")
+        print("3. Cambiar estado proyecto")
+        print("4. Volver")
+        op = input("→ ")
+        if op == "1":
+            mat = input("Matrícula: ").upper()
+            est = next((e for e in datos.estudiantes if e.matricula == mat), None)
+            if est and est not in p.equipo:
+                p.agregar_estudiante(est)
+                datos.guardar_datos()
+        elif op == "2":
+            desc = input("Descripción: ")
+            fecha = input("Fecha límite (YYYY-MM-DD): ")
+            mat = input("Matrícula asignada (enter = none): ").upper() or None
+            t = datos.Tarea(desc, fecha, matricula_asignada=mat)
+            if p.lista_tareas:
+                dep = input(f"¿Depende de tarea? (1-{len(p.lista_tareas)} o enter): ")
+                if dep.isdigit():
+                    idx = int(dep) - 1
+                    if 0 <= idx < len(p.lista_tareas):
+                        t.agregar_dependencia(p.lista_tareas[idx])
+            p.agregar_tarea(t)
+            if t.estado == "pendiente":
+                datos.cola_pendientes.append(t)
+            datos.guardar_datos()
+        elif op == "3":
+            p.cambiar_estado("finalizado" if p.estado == "activo" else "activo")
+            datos.guardar_datos()
+        elif op == "4":
+            break
 
-
-def asignar_estudiante_a_proyecto():
-    print("\n--- Asignar Estudiante a Proyecto ---")
-    nombre_proyecto = input("Nombre del proyecto: ")
-    proyecto = datos.buscar_proyecto_por_nombre(nombre_proyecto)
-    
-    if not proyecto:
-        print("Proyecto no encontrado.")
-        return
-
-    matricula_estudiante = input("Matrícula del estudiante a asignar: ")
-    estudiante = datos.buscar_estudiante_por_matricula(matricula_estudiante)
-    if not estudiante:
-        print("Estudiante no encontrado.")
-        return
-    if estudiante in proyecto.equipo:
-        print(f"El estudiante {estudiante.nombre} ya está en el equipo del proyecto '{nombre_proyecto}'.")
-    else:
-        proyecto.equipo.append(estudiante)
-        print(f"Estudiante {estudiante.nombre} asignado al proyecto '{nombre_proyecto}'.")
-        # datos.guardar_datos() # Llama a la función de guardar si está implementada
-
+def mostrar_menu_proyectos():
+    while True:
+        print("\n--- PROYECTOS ---")
+        print("1. Crear | 2. Listar | 3. Editar | 4. Volver")
+        op = input("→ ")
+        if op == "1": crear_proyecto()
+        elif op == "2": listar_proyectos()
+        elif op == "3": editar_proyecto()
+        elif op == "4": break

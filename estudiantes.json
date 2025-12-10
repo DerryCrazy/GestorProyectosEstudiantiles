@@ -1,0 +1,42 @@
+[
+    {
+        "nombre": "Ana Garc\u00eda",
+        "matricula": "A001"
+    },
+    {
+        "nombre": "Luis Mart\u00ednez",
+        "matricula": "A002"
+    },
+    {
+        "nombre": "Sof\u00eda Hern\u00e1ndez",
+        "matricula": "A003"
+    },
+    {
+        "nombre": "Diego Torres",
+        "matricula": "A004"
+    },
+    {
+        "nombre": "Valeria Ruiz",
+        "matricula": "A005"
+    },
+    {
+        "nombre": "Carlos P\u00e9rez",
+        "matricula": "A006"
+    },
+    {
+        "nombre": "Mariana L\u00f3pez",
+        "matricula": "A007"
+    },
+    {
+        "nombre": "Juan Ram\u00edrez",
+        "matricula": "A008"
+    },
+    {
+        "nombre": "Elena Castro",
+        "matricula": "A009"
+    },
+    {
+        "nombre": "Miguel Perez",
+        "matricula": "A010"
+    }
+]
