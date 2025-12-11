@@ -63,6 +63,7 @@ def cola_fifo():
 
 # Función para visualizar las dependencias de tareas como un árbol (o grafo acíclico dirigido, DAG)
 def arbol_dependencias():
+    print("Seleccione un proyecto para ver su árbol de dependencias:")
     if not datos.proyectos:
         return
     # Permite al usuario seleccionar un proyecto
@@ -87,6 +88,27 @@ def arbol_dependencias():
             if t not in visitados:
                 imprimir(t)
                 # Se podría insertar  para visualizar la relación de dependencias.
+    print("Quieres editar la dependencia?")
+    if input("s/n: ").lower() == "s":
+        desc=input("Nombre de la tarea a editar:")
+        for t in p.lista_tareas:
+            if t.descripcion.lower() == desc.lower():
+                print("1. Cambiar dependencia")
+                print("2. Eliminar dependencia")
+                op=input("→ ")
+                desc_dep=input("Descripción de la tarea dependencia: ")
+                for t_dep in p.lista_tareas:
+                    if t_dep.descripcion.lower() == desc_dep.lower():
+                        if op == "1":
+                            t.agregar_dependencia(t_dep)
+                            print(f"Dependencia '{t_dep.descripcion}' agregada a '{t.descripcion}'")
+                        elif op == "2":
+                            t.eliminar_dependencia(t_dep)
+                            print(f"Dependencia '{t_dep.descripcion}' eliminada de '{t.descripcion}'")
+                        datos.guardar_datos()
+                        return
+                print("Tarea dependencia no encontrada.")
+                return
 
 # Función para marcar una tarea como finalizada buscando por su descripción
 def marcar_finalizada():
