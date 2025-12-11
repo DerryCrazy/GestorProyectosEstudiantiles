@@ -25,6 +25,11 @@ class Tarea:
     def agregar_dependencia(self, tarea_previa):
         if tarea_previa not in self.dependencias:
             self.dependencias.append(tarea_previa)
+    
+    # Metodo para eliminar una dependencia
+    def eliminar_dependencia(self, tarea_previa):
+        if tarea_previa in self.dependencias:
+            self.dependencias.remove(tarea_previa)
 
      # Método clave: Intenta marcar la tarea como finalizada
     def marcar_finalizada(self):
@@ -75,3 +80,4 @@ class Proyecto:
 
     def __str__(self):
         return f"{self.nombre} [{self.estado}] | Equipo: {len(self.equipo)} | Tareas: {len(self.lista_tareas)}"
+
