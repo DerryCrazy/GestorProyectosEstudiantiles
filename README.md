@@ -1,8 +1,16 @@
-📘 Gestor de Proyectos Estudiantiles
+## 📘 Gestor de Proyectos Estudiantiles
 
 Sistema en Python para administrar estudiantes y proyectos de manera sencilla, usando archivos JSON para almacenar la información.
 
-📌 Descripción del Proyecto
+## Integrantes del Equipo 2
+
+*   **Camacho Juarez Kevin Uriel** (B24690022)
+*   **Fernandez Mar Gabriel** (24690681)
+*   **Moctezuma Avila Luis Gerardo** (24690682)
+*   **Rivera Correa Marisol** (24690123)
+*   **Vela Tolentino Oscar Rene** (24690191)
+
+## 📌 Descripción del Proyecto
 
 Este sistema permite registrar estudiantes, gestionar proyectos, ordenarlos, consultarlos y administrarlos mediante un menú interactivo en consola.
 
@@ -35,7 +43,7 @@ menu.py → contiene las opciones del menú.
 
 clases.py → clases principales del sistema.
 
-est.py / proy.py → gestión de estudiantes y proyectos.
+est.py / proy.py / homework.py→ gestión de estudiantes, proyectos y tareas.
 
 datos.py → lectura y escritura de archivos JSON.
 
